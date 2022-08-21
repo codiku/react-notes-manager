@@ -17,7 +17,7 @@ export function Header({ logo }) {
       }}
     >
       <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <Logo image={logo} text="Notomatic" />
+        <Logo image={logo} text="Notomatic" onClick={() => alert("todo")} />
         <span style={{ whiteSpace: "nowrap", color: "#b8b8b8" }}>
           Manage your notes
         </span>

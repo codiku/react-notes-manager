@@ -3,13 +3,20 @@ export function Workspace(props) {
     <div
       className="container"
       style={{
-        padding: 30,
-        backgroundColor: "white",
-        borderRadius: 22,
         height: "100%",
+        padding: 50,
       }}
     >
-      {props.children}
+      <div
+        style={{
+          padding: 30,
+          backgroundColor: "white",
+          borderRadius: 22,
+          height: "100%",
+        }}
+      >
+        {props.children}
+      </div>
     </div>
   );
 }

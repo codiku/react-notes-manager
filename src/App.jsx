@@ -7,7 +7,13 @@ export function App() {
     console.log("I run from <App/>!");
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column",
+        height: "100%",
+      }}
+    >
       <Header logo={logo} text="Notomatic" />
       <Outlet />
     </div>
