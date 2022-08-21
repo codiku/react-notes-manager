@@ -7,13 +7,9 @@ export function App() {
     console.log("I run from <App/>!");
   }, []);
   return (
-    <div className="container">
-      <div className="row">
-        <Header logo={logo} text="Notomatic" />
-      </div>
-      <div className="row">
-        <Outlet />
-      </div>
+    <div>
+      <Header logo={logo} text="Notomatic" />
+      <Outlet />
     </div>
   );
 }
