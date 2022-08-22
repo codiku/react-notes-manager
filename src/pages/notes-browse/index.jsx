@@ -44,38 +44,3 @@ export function NotesBrowse(props) {
     </div>
   );
 }
-/*
-<div className="row justify-content-center p-5">
-<div className="col-sm-12 col-md-5">
-  <SearchBar
-    onSubmit={(searchTerm) => {
-      alert(searchTerm);
-    }}
-  />
-</div>
-</div>
-<div className="row justify-content-center">
-{[1].map((i) => (
-  <div
-    style={{
-      width: 300,
-      marginBottom: 30,
-    }}
-  >
-    <TextCard
-      title={"Card title"}
-      subtitle="Card subtitle"
-      text="Some quick example text to build on the card title and make up the bulk of the card's content."
-      onClickTrash={(e) => {
-        if (window.confirm("Delete this note ?")) {
-          //do something
-          e.stopPropagation();
-        }
-      }}
-      onClickCard={() => alert("hey")}
-    />
-  </div>
-))}
-</div>
-
-*/
