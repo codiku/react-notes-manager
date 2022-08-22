@@ -9,7 +9,7 @@ export function Workspace(props) {
     >
       <div
         style={{
-          padding: 30,
+          padding: 100,
           backgroundColor: "white",
           borderRadius: 22,
           height: "100%",

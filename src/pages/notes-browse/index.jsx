@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
-
+import { useNavigate } from "react-router-dom";
 export function NotesBrowse(props) {
+  const navigate = useNavigate();
   return (
     <div
       className="row justify-content-center"
@@ -36,7 +36,7 @@ export function NotesBrowse(props) {
                   e.stopPropagation();
                 }
               }}
-              onClickCard={() => alert("hey")}
+              onClickCard={() => navigate("note/1")}
             />
           </div>
         ))}

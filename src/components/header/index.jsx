@@ -1,7 +1,8 @@
 import { ButtonPrimary } from "../button-primary";
 import { Logo } from "../logo";
-
+import { useNavigate } from "react-router-dom";
 export function Header({ logo }) {
+  const navigate = useNavigate();
   return (
     <div
       className="row"
@@ -17,7 +18,7 @@ export function Header({ logo }) {
       }}
     >
       <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <Logo image={logo} text="Notomatic" onClick={() => alert("todo")} />
+        <Logo image={logo} text="Notomatic" onClick={() => navigate("/")} />
         <span style={{ whiteSpace: "nowrap", color: "#b8b8b8" }}>
           Manage your notes
         </span>
@@ -26,7 +27,9 @@ export function Header({ logo }) {
         className="col-xs-12 col-sm-8 col-md-8 col-lg-8"
         style={{ textAlign: "right" }}
       >
-        <ButtonPrimary onClick={() => alert("todo")}>New note +</ButtonPrimary>
+        <ButtonPrimary onClick={() => navigate("note/create")}>
+          New note +
+        </ButtonPrimary>
       </div>
     </div>
   );
