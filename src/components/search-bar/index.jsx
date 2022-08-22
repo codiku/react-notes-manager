@@ -9,17 +9,15 @@ export function SearchBar(props) {
   };
 
   return (
-    <>
-      <div style={{ flexDirection: "row" }}>
-        <SearchIcon size={25} className={s.icon} style={{ color: "#b8b8b8" }} />
+    <div style={{ flexDirection: "row" }}>
+      <SearchIcon size={25} className={s.icon} style={{ color: "#b8b8b8" }} />
 
-        <input
-          onKeyUp={onKeyUp}
-          className={s.input}
-          type="text"
-          placeholder="Search a note..."
-        />
-      </div>
-    </>
+      <input
+        onKeyUp={onKeyUp}
+        className={s.input}
+        type="text"
+        placeholder="Search a note..."
+      />
+    </div>
   );
 }
