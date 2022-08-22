@@ -1,4 +1,5 @@
 import { ButtonPrimary } from "../../components/button-primary";
+import { PencilFill } from "react-bootstrap-icons";
 import { useState } from "react";
 export function NoteForm({
   onSubmit,
@@ -6,6 +7,7 @@ export function NoteForm({
   buttonText,
   defaultValue,
   isReadOnly,
+  onClickEdit,
 }) {
   const [formValues, setFormValues] = useState({
     title: defaultValue?.title ?? "",
@@ -21,7 +23,18 @@ export function NoteForm({
       }}
     >
       <div>
-        <h2 className="mb-3">{defaultValue?.title ?? title}</h2>
+        <div className="row justify-content-space-between">
+          <div className="col">
+            <h2 className="mb-3">
+              {defaultValue?.title && isReadOnly ? defaultValue?.title : title}
+            </h2>
+          </div>
+          {onClickEdit && (
+            <div className="col-1">
+              <PencilFill style={{ cursor: "pointer" }} onClick={onClickEdit} />
+            </div>
+          )}
+        </div>
         <div className="mb-3" style={{ maxWidth: 300 }}>
           {!isReadOnly && (
             <>
@@ -66,11 +79,13 @@ export function NoteForm({
         </div>
       </div>
 
-      <div style={{ alignSelf: "end" }}>
-        <ButtonPrimary onClick={() => onSubmit(formValues)}>
-          {buttonText}
-        </ButtonPrimary>
-      </div>
+      {onSubmit && (
+        <div style={{ alignSelf: "end" }}>
+          <ButtonPrimary onClick={() => onSubmit(formValues)}>
+            {buttonText}
+          </ButtonPrimary>
+        </div>
+      )}
     </div>
   );
 }

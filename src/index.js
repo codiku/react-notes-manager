@@ -17,7 +17,7 @@ root.render(
         <Route path="/" element={<NotesBrowse />} />
         <Route path="note/:noteId" element={<NoteRead />} />
         <Route path="note/create" element={<NoteCreate />} />
-        <Route path="note/update" element={<NoteUpdate />} />
+        <Route path="note/update/:noteId" element={<NoteUpdate />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

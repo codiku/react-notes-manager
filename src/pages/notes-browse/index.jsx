@@ -36,7 +36,7 @@ export function NotesBrowse(props) {
                   e.stopPropagation();
                 }
               }}
-              onClickCard={() => navigate("note/1")}
+              onClickCard={() => navigate("note/x")}
             />
           </div>
         ))}

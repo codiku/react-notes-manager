@@ -5,7 +5,7 @@ export function NoteCreate(props) {
     <Workspace>
       <NoteForm
         title="New note"
-        buttonText="Save new note"
+        buttonText="Save note"
         onSubmit={(formValues) => alert(JSON.stringify(formValues))}
       />
     </Workspace>

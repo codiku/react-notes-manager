@@ -4,6 +4,7 @@ export function NoteUpdate(props) {
   return (
     <Workspace>
       <NoteForm
+        defaultValue={{ title: "to update", content: "to udpdate as well" }}
         title="Modify note"
         buttonText="Update note"
         onSubmit={(formValues) => alert(JSON.stringify(formValues))}
