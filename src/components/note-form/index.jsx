@@ -1,6 +1,8 @@
 import { ButtonPrimary } from "../../components/button-primary";
 import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import { useState } from "react";
+import { FieldError } from "../field-error";
+import { NOTE_FORM_VALIDATORS } from "./constant";
 
 export function NoteForm({
   onSubmit,
@@ -16,6 +18,14 @@ export function NoteForm({
     content: defaultValue?.content ?? "",
   });
 
+  const [formErrors, setFormErrors] = useState({ title: null, content: null });
+
+  const applyFieldError = (e) => {
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: NOTE_FORM_VALIDATORS[e.target.name](e.target.value),
+    });
+  };
   const actionIcons = (
     <>
       {onClickEdit && (
@@ -31,22 +41,26 @@ export function NoteForm({
     </>
   );
 
+  const updateFormValue = (e) => {
+    setFormValues((oldFormValues) => {
+      return {
+        ...oldFormValues,
+        [e.target.name]: e.target.value,
+      };
+    });
+    applyFieldError(e);
+  };
   const titleInput = (
     <>
       <label className="form-label">Title</label>
       <input
         type="text"
+        name="title"
         value={formValues.title}
         className="form-control"
-        onChange={(e) =>
-          setFormValues((oldFormValues) => {
-            return {
-              ...oldFormValues,
-              title: e.target.value,
-            };
-          })
-        }
+        onChange={updateFormValue}
       />
+      <FieldError msg={formErrors.title} />
     </>
   );
   const contentInput = (
@@ -54,23 +68,26 @@ export function NoteForm({
       <label className="form-label">Content</label>
       <textarea
         value={formValues.content}
-        onChange={(e) =>
-          setFormValues((oldFormValues) => {
-            return {
-              ...oldFormValues,
-              content: e.target.value,
-            };
-          })
-        }
+        name="content"
         className="form-control"
+        onChange={updateFormValue}
         rows="5"
       ></textarea>
+      <FieldError msg={formErrors.content} />
     </>
   );
 
   const submitBtn = (
     <div style={{ alignSelf: "end" }}>
-      <ButtonPrimary onClick={() => onSubmit(formValues)}>
+      <ButtonPrimary
+        isDisabled={
+          !formValues?.title ||
+          !formValues?.content ||
+          formErrors.title ||
+          formErrors.content
+        }
+        onClick={() => onSubmit(formValues)}
+      >
         {buttonText}
       </ButtonPrimary>
     </div>
