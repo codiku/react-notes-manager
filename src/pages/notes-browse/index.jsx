@@ -21,6 +21,7 @@ export function NotesBrowse(props) {
       <div className="row justify-content-center" style={{ paddingTop: 50 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div
+            key={i}
             style={{
               width: 300,
               paddingBottom: 30,

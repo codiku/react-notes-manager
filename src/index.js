@@ -8,19 +8,26 @@ import { NoteUpdate } from "./pages/note-update";
 import { NotesBrowse } from "./pages/notes-browse";
 import { PageNotFound } from "./pages/page-not-found";
 import "./index.css"
+import { Provider } from 'react-redux'
+import { persistantStore, store } from './store'
+import { PersistGate } from 'redux-persist/integration/react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="/" element={<NotesBrowse />} />
-        <Route path="note/:noteId" element={<NoteRead />} />
-        <Route path="note/create" element={<NoteCreate />} />
-        <Route path="note/update/:noteId" element={<NoteUpdate />} />
-      </Route>
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-  </BrowserRouter>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistantStore}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<NotesBrowse />} />
+            <Route path="note/:noteId" element={<NoteRead />} />
+            <Route path="note/create" element={<NoteCreate />} />
+            <Route path="note/update/:noteId" element={<NoteUpdate />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
 );
 
