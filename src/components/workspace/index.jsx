@@ -4,12 +4,12 @@ export function Workspace(props) {
       className="container"
       style={{
         height: "100%",
-        padding: 50,
+        padding: 25,
       }}
     >
       <div
         style={{
-          padding: 100,
+          padding: 50,
           backgroundColor: "white",
           borderRadius: 22,
           height: "100%",

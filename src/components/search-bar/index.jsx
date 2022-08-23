@@ -10,7 +10,7 @@ export function SearchBar({ onChange }) {
         onChange={onChange}
         className={s.input}
         type="text"
-        placeholder="Search a note..."
+        placeholder="Search your notes..."
       />
     </div>
   );

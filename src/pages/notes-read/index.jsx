@@ -3,6 +3,7 @@ import { NoteForm } from "../../components/note-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeNote } from "../../store/note-slice";
+import { NoteAPI } from "../../api/note";
 
 export function NoteRead(props) {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export function NoteRead(props) {
 
   const confirmRemoveNote = () => {
     if (window.confirm("Delete this note ?")) {
+      NoteAPI.deleteById(currentNote.id);
       dispatch(removeNote(currentNote));
       navigate("/");
     }

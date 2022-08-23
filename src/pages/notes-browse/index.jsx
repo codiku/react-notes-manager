@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeNote } from "../../store/note-slice";
+import { NoteAPI } from "../../api/note";
 export function NotesBrowse(props) {
   const navigate = useNavigate();
   const [currentSearchTerm, setCurrentSearchTerm] = useState("");
@@ -21,6 +22,7 @@ export function NotesBrowse(props) {
 
   const confirmRemoveNote = (note) => {
     if (window.confirm("Delete this note ?")) {
+      NoteAPI.deleteById(note.id);
       dispatch(removeNote(note));
     }
   };
