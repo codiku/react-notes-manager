@@ -1,8 +1,19 @@
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { removeNote } from "../../store/note-slice";
 export function NotesBrowse(props) {
   const navigate = useNavigate();
+  const noteList = useSelector((store) => store.noteSlice.noteList);
+  const dispatch = useDispatch();
+
+  const confirmRemoveNote = (note) => {
+    if (window.confirm("Delete this note ?")) {
+      //do something
+      dispatch(removeNote(note));
+    }
+  };
   return (
     <div
       className="row justify-content-center"
@@ -19,25 +30,23 @@ export function NotesBrowse(props) {
         />
       </div>
       <div className="row justify-content-center" style={{ paddingTop: 50 }}>
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+        {noteList.map((note) => (
           <div
-            key={i}
+            key={note.id}
             style={{
               width: 300,
               paddingBottom: 30,
             }}
           >
             <TextCard
-              title={"Card title"}
-              subtitle="Card subtitle"
-              text="Some quick example text to build on the card title and make up the bulk of the card's content."
+              title={note.title}
+              subtitle="todo"
+              text={note.content}
               onClickTrash={(e) => {
-                if (window.confirm("Delete this note ?")) {
-                  //do something
-                  e.stopPropagation();
-                }
+                e.stopPropagation();
+                confirmRemoveNote(note);
               }}
-              onClickCard={() => navigate("note/x")}
+              onClickCard={() => navigate("note/" + note.id)}
             />
           </div>
         ))}
