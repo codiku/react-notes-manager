@@ -7,6 +7,7 @@ export function NoteRead(props) {
     <Workspace>
       <NoteForm
         isReadOnly
+        onClickDelete={() => alert("todo")}
         onClickEdit={() => navigate("/note/update/x")}
         defaultValue={{
           title: "Hello",
