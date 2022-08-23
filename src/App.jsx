@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
 import { Header } from "./components/header";
 import logo from "./assets/images/logo.png";
+import { useDispatch } from "react-redux";
+import { NoteAPI } from "./api/note";
+import useAsyncEffect from "use-async-effect";
+import { setNoteList } from "./store/note-slice";
 export function App() {
-  useEffect(() => {
-    console.log("I run from <App/>!");
+  const dispatch = useDispatch();
+
+  useAsyncEffect(async () => {
+    const noteList = await NoteAPI.fetchAll();
+    dispatch(setNoteList(noteList));
   }, []);
   return (
     <div
