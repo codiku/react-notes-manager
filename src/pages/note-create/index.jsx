@@ -14,7 +14,10 @@ export function NoteCreate(props) {
         title="New note"
         buttonText="Save note"
         onSubmit={async (formValues) => {
-          const newNote = await NoteAPI.create(formValues);
+          const newNote = await NoteAPI.create({
+            ...formValues,
+            created_at: new Date().toLocaleDateString(),
+          });
           dispatch(addNote(newNote));
           alert("Note successfully created");
           navigate("/");
