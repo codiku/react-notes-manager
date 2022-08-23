@@ -15,7 +15,7 @@ export class NoteAPI {
     static async deleteById(noteId) {
         return (await axios.delete(`${BASE_URL}/${noteId}`)).data
     }
-    static async updateById(noteId) {
-        return (await axios.patch(`${BASE_URL}/${noteId}`)).data
+    static async updateById(id, values) {
+        return (await axios.patch(`${BASE_URL}/${id}`, values)).data
     }
 }

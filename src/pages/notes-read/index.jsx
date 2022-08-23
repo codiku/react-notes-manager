@@ -1,10 +1,7 @@
 import { Workspace } from "../../components/workspace";
 import { NoteForm } from "../../components/note-form";
 import { useNavigate, useParams } from "react-router-dom";
-import useAsyncEffect from "use-async-effect";
 import { useSelector, useDispatch } from "react-redux";
-import { NoteAPI } from "../../api/note";
-import { useState } from "react";
 import { removeNote } from "../../store/note-slice";
 
 export function NoteRead(props) {
@@ -15,12 +12,19 @@ export function NoteRead(props) {
     return store.noteSlice.noteList.find((note) => note.id === noteId);
   });
 
+  const confirmRemoveNote = () => {
+    if (window.confirm("Delete this note ?")) {
+      dispatch(removeNote(currentNote));
+      navigate("/");
+    }
+  };
+
   return (
     <Workspace>
       {currentNote && (
         <NoteForm
           isReadOnly
-          onClickDelete={() => dispatch(removeNote(currentNote))}
+          onClickDelete={confirmRemoveNote}
           onClickEdit={() => navigate("/note/update/" + currentNote.id)}
           defaultValue={{
             title: currentNote.title,
