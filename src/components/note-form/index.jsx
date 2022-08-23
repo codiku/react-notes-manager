@@ -72,7 +72,7 @@ export function NoteForm({
         className="form-control"
         onChange={updateFormValue}
         rows="5"
-      ></textarea>
+      />
       <FieldError msg={formErrors.content} />
     </>
   );
