@@ -14,10 +14,6 @@ export function NoteUpdate(props) {
 
   const confirmUpdateNote = async (formValues) => {
     if (window.confirm("Update this note ?")) {
-      const noteToUpdate = {
-        ...currentNote,
-        ...formValues,
-      };
       const updatedNote = await NoteAPI.updateById(currentNote.id, formValues);
       dispatch(updateNote(updatedNote));
       navigate("note/" + currentNote.id);
