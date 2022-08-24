@@ -1,0 +1,19 @@
+.main_container {
+    background-color: white;
+    margin: 0;
+    padding: 30px;
+    padding-left: 50px;
+    -webkit-box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.4);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtitle {
+    white-space: nowrap;
+    color: #b8b8b8;
+}
+
+.button {
+    text-align: right;
+}
