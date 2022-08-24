@@ -3,7 +3,7 @@ import { Search as SearchIcon } from "react-bootstrap-icons";
 
 export function SearchBar({ onChange }) {
   return (
-    <div style={{ flexDirection: "row" }}>
+    <div className="row">
       <SearchIcon size={25} className={s.icon} />
 
       <input

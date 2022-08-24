@@ -3,7 +3,7 @@ import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import { useState } from "react";
 import { FieldError } from "../field-error";
 import { NOTE_FORM_VALIDATORS } from "./constant";
-
+import s from "./style.module.css";
 export function NoteForm({
   onSubmit,
   title,
@@ -30,12 +30,12 @@ export function NoteForm({
     <>
       {onClickEdit && (
         <div className="col-1">
-          <PencilFill style={{ cursor: "pointer" }} onClick={onClickEdit} />
+          <PencilFill className={s.icon} onClick={onClickEdit} />
         </div>
       )}
       {onClickDelete && (
         <div className="col-1">
-          <TrashFill style={{ cursor: "pointer" }} onClick={onClickDelete} />
+          <TrashFill className={s.icon} onClick={onClickDelete} />
         </div>
       )}
     </>
@@ -94,14 +94,7 @@ export function NoteForm({
   );
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: "100%",
-      }}
-    >
+    <div className={s.container}>
       <div>
         <div className="row justify-content-space-between">
           <div className="col-10">
@@ -111,7 +104,7 @@ export function NoteForm({
           </div>
           {actionIcons}
         </div>
-        <div className="mb-3" style={{ maxWidth: 300 }}>
+        <div className={`mb-3 ${s.title_input_container}`}>
           {!isReadOnly && titleInput}
         </div>
         <div className="mb-3">

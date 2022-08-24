@@ -1,0 +1,14 @@
+.icon {
+    cursor: pointer
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.title_input_container {
+    max-width: 300px;
+}

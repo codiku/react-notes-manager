@@ -4,3 +4,13 @@
     padding-left: 15px;
     color: #0d6efd;
 }
+
+.container {
+    display: flex;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.img {
+    height: 40px
+}

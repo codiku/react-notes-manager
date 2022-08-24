@@ -1,0 +1,11 @@
+.container {
+    height: 100%;
+    padding: 25px;
+}
+
+.workspace {
+    padding: 50px;
+    background-color: white;
+    border-radius: 22px;
+    height: 100%;
+}
