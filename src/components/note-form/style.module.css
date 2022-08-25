@@ -12,3 +12,7 @@
 .title_input_container {
     max-width: 300px;
 }
+
+.submit_btn{
+    align-self: end;
+}

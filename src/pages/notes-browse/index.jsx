@@ -1,10 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
+
+import { NoteAPI } from "../../api/note";
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
+import { removeNote } from "../../store/note-slice";
+import s from "./style.module.css"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeNote } from "../../store/note-slice";
-import { NoteAPI } from "../../api/note";
+
 export function NotesBrowse(props) {
   const navigate = useNavigate();
   const [currentSearchTerm, setCurrentSearchTerm] = useState("");
@@ -29,11 +32,8 @@ export function NotesBrowse(props) {
 
   return (
     <div
-      className="row justify-content-center"
-      style={{
-        padding: 30,
-        margin: 0,
-      }}
+      className={`row justify-content-center ${s.container}`}
+     
     >
       <div className="col-sm-12 col-md-4">
         <SearchBar
@@ -42,21 +42,18 @@ export function NotesBrowse(props) {
           }
         />
         {currentSearchTerm !== "" && (
-          <div style={{ textAlign: "center", paddingTop: 40 }}>
+          <div className={s.search_result_label}>
             {filteredNoteList.length} note(s) match the term{" "}
             <b>"{currentSearchTerm}"</b>
           </div>
         )}
       </div>
 
-      <div className="row justify-content-center" style={{ paddingTop: 50 }}>
+      <div className={`row justify-content-center ${s.cards_container}`} >
         {filteredNoteList.map((note) => (
           <div
             key={note.id}
-            style={{
-              width: 300,
-              paddingBottom: 30,
-            }}
+            className={s.card_container}
           >
             <TextCard
               title={note.title}

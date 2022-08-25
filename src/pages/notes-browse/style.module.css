@@ -1,0 +1,18 @@
+.container {
+    padding: 30px;
+    margin: 0;
+  }
+
+  .search_result_label{
+    text-align: center;
+     padding-top: 40px;
+  }
+
+  .cards_container{
+    padding-top: 50px;
+  }
+
+  .card_container{
+        width: 300px;
+        padding-bottom: 30px;
+  }

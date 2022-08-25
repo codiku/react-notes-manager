@@ -1,9 +1,11 @@
-import { ButtonPrimary } from "../../components/button-primary";
 import { PencilFill, TrashFill } from "react-bootstrap-icons";
-import { useState } from "react";
+
+import { ButtonPrimary } from "../../components/button-primary";
 import { FieldError } from "../field-error";
 import { NOTE_FORM_VALIDATORS } from "./constant";
 import s from "./style.module.css";
+import { useState } from "react";
+
 export function NoteForm({
   onSubmit,
   title,
@@ -78,7 +80,7 @@ export function NoteForm({
   );
 
   const submitBtn = (
-    <div style={{ alignSelf: "end" }}>
+    <div className={s.submit_btn}>
       <ButtonPrimary
         isDisabled={
           !formValues?.title ||
