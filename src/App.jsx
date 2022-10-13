@@ -6,6 +6,7 @@ import s from "./style.module.css";
 import { setNoteList } from "./store/note-slice";
 import useAsyncEffect from "use-async-effect";
 import { useDispatch } from "react-redux";
+
 export function App() {
   const dispatch = useDispatch();
 
@@ -13,7 +14,7 @@ export function App() {
     const noteList = await NoteAPI.fetchAll();
     dispatch(setNoteList(noteList));
   }, []);
-  
+
   return (
     <div className={s.container}>
       <Header logo={logo} text="Notomatic" />
