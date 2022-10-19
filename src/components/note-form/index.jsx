@@ -15,6 +15,8 @@ export function NoteForm({
   onClickDelete,
   isEditable
 }) {
+
+
   const [formValues, setFormValues] = useState({
     title: defaultValue?.title ?? "",
     content: defaultValue?.content ?? "",
@@ -53,8 +55,8 @@ export function NoteForm({
         [e.target.name]: e.target.value,
       };
     });
-    applyFieldError(e);
-  };
+  }
+
   const titleInput = (
     <>
       <label className="form-label">Title</label>

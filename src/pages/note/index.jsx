@@ -6,7 +6,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { NoteForm } from "../../components/note-form";
+import { NoteForm } from "components/note-form";
 
 const FORM_LABELS = {
   readonly: { title: "New note", button: "Save new note" },
@@ -20,6 +20,8 @@ export function Note(props) {
   const [updateNoteById, updatedNote] = useUpdateNoteByIdMutation()
   const [formLabels, setFormLabels] = useState(FORM_LABELS.readonly)
   const { data: currentNote } = useFetchNoteByIdQuery(noteId);
+
+
   const [isEditable, setIsEditable] = useState(false)
 
   useEffect(function onDeleteNote() {

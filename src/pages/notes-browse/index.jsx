@@ -1,17 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-
-import { NoteAPI } from "../../api/note";
-import { SearchBar } from "../../components/search-bar";
-import { TextCard } from "../../components/text-card";
-import { removeNote } from "../../store/slices/note-slice";
-import s from "./style.module.css";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import {
-  noteAPI,
   useDeleteNoteByIdMutation,
   useFetchAllNotesQuery,
 } from "store/api/note-api";
+
+import { SearchBar } from "../../components/search-bar";
+import { TextCard } from "../../components/text-card";
+import s from "./style.module.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function NotesBrowse(props) {
   const navigate = useNavigate();
@@ -20,17 +16,16 @@ export function NotesBrowse(props) {
   const { data: noteList = [] } = useFetchAllNotesQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  console.log("note list", noteList);
 
-  const [deleteNoteById, deletedNoteResponse] = useDeleteNoteByIdMutation();
+  const [deleteNoteById] = useDeleteNoteByIdMutation();
 
   const filteredNoteList =
     currentSearchTerm !== ""
       ? noteList.filter(
-          (note) =>
-            note.title.toLowerCase().includes(currentSearchTerm) ||
-            note.content.toLowerCase().includes(currentSearchTerm)
-        )
+        (note) =>
+          note.title.toLowerCase().includes(currentSearchTerm) ||
+          note.content.toLowerCase().includes(currentSearchTerm)
+      )
       : noteList;
 
   const confirmRemoveNote = (note) => {
@@ -60,7 +55,7 @@ export function NotesBrowse(props) {
           <div key={note.id} className={s.card_container}>
             <TextCard
               title={note.title}
-              subtitle={note.created_at}
+              subtitle={new Date(note.created_at * 1000).toLocaleDateString()}
               text={note.content}
               onClickTrash={(e) => {
                 e.stopPropagation();
