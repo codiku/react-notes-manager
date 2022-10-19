@@ -11,9 +11,9 @@ export function NoteForm({
   title,
   buttonText,
   defaultValue,
-  isReadOnly,
   onClickEdit,
   onClickDelete,
+  isEditable
 }) {
   const [formValues, setFormValues] = useState({
     title: defaultValue?.title ?? "",
@@ -32,7 +32,10 @@ export function NoteForm({
     <>
       {onClickEdit && (
         <div className="col-1">
-          <PencilFill className={s.icon} onClick={onClickEdit} />
+          <PencilFill
+            className={s.icon}
+            onClick={onClickEdit}
+          />
         </div>
       )}
       {onClickDelete && (
@@ -100,19 +103,19 @@ export function NoteForm({
       <div className="row justify-content-space-between">
         <div className="col-10">
           <h2 className="mb-3">
-            {defaultValue?.title && isReadOnly ? defaultValue?.title : title}
+            {defaultValue?.title && !isEditable ? defaultValue?.title : title}
           </h2>
         </div>
         {actionIcons}
       </div>
       <div className={`mb-3 ${s.title_input_container}`}>
-        {!isReadOnly && titleInput}
+        {isEditable && titleInput}
       </div>
       <div className="mb-3">
-        {isReadOnly ? <pre>{formValues.content}</pre> : contentInput}
+        {isEditable ? contentInput : <pre>{formValues.content}</pre>}
       </div>
 
-      {onSubmit && submitBtn}
+      {isEditable && onSubmit && submitBtn}
     </div>
   );
 }

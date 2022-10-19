@@ -45,6 +45,18 @@ export const noteAPI = createApi({
         method: "PUT",
         body: { title, content },
       }),
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        const { data: updatedNote } = await queryFulfilled;
+        dispatch(
+          noteAPI.util.updateQueryData(
+            "fetchNoteById",
+            updatedNote.id,
+            (cachedNotes) => {
+              return updatedNote
+            }
+          )
+        );
+      },
     }),
   }),
 });

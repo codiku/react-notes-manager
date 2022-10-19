@@ -1,15 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import "./index.css"
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { App } from './App';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Note } from './pages/note/index';
 import { NoteCreate } from "./pages/note-create";
-import { NoteRead } from "./pages/notes-read";
-import { NoteUpdate } from "./pages/note-update";
 import { NotesBrowse } from "./pages/notes-browse";
 import { PageNotFound } from "./pages/page-not-found";
-import "./index.css"
 import { Provider } from 'react-redux'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { store } from './store'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -18,9 +20,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<NotesBrowse />} />
-          <Route path="note/:noteId" element={<NoteRead />} />
+          <Route path="note/:noteId" element={<Note />} />
           <Route path="note/create" element={<NoteCreate />} />
-          <Route path="note/update/:noteId" element={<NoteUpdate />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

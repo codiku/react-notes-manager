@@ -1,10 +1,8 @@
 import { NoteForm } from "../../components/note-form";
-import { NoteAPI } from "../../api/note";
-
-import { useNavigate } from "react-router-dom";
-
 import { useAddNoteMutation } from "store/api/note-api";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export function NoteCreate(props) {
   const navigate = useNavigate();
   const [addNote, noteResponse] = useAddNoteMutation();
@@ -14,9 +12,10 @@ export function NoteCreate(props) {
       alert(`"${noteResponse.data.title}" was successfully created`);
       navigate("/");
     }
-  }, [noteResponse.data]);
+  }, [navigate, noteResponse.data]);
   return (
     <NoteForm
+      isEditable
       title="New note"
       buttonText="Save note"
       onSubmit={async (formValues) => {
