@@ -3,16 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { NoteAPI } from "../../api/note";
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
-import { removeNote } from "../../store/note-slice";
+import { removeNote } from "../../store/slices/note-slice";
 import s from "./style.module.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  noteAPI,
+  useDeleteNoteByIdMutation,
+  useFetchAllNotesQuery,
+} from "store/api/note-api";
 
 export function NotesBrowse(props) {
   const navigate = useNavigate();
   const [currentSearchTerm, setCurrentSearchTerm] = useState("");
-  const noteList = useSelector((store) => store.noteSlice.noteList);
-  const dispatch = useDispatch();
+
+  const { data: noteList = [] } = useFetchAllNotesQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
+  console.log("note list", noteList);
+
+  const [deleteNoteById, deletedNoteResponse] = useDeleteNoteByIdMutation();
 
   const filteredNoteList =
     currentSearchTerm !== ""
@@ -24,9 +34,8 @@ export function NotesBrowse(props) {
       : noteList;
 
   const confirmRemoveNote = (note) => {
-    if (window.confirm("Delete this note ?")) {
-      NoteAPI.deleteById(note.id);
-      dispatch(removeNote(note));
+    if (window.confirm("Delete this note ?" + note.id)) {
+      deleteNoteById(note.id);
     }
   };
 

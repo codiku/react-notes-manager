@@ -2,23 +2,29 @@ import { NoteForm } from "../../components/note-form";
 import { NoteAPI } from "../../api/note";
 
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addNote } from "../../store/note-slice";
+
+import { useAddNoteMutation } from "store/api/note-api";
+import { useEffect } from "react";
 export function NoteCreate(props) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [addNote, noteResponse] = useAddNoteMutation();
+
+  useEffect(() => {
+    if (noteResponse.data) {
+      alert(`"${noteResponse.data.title}" was successfully created`);
+      navigate("/");
+    }
+  }, [noteResponse.data]);
   return (
     <NoteForm
       title="New note"
       buttonText="Save note"
       onSubmit={async (formValues) => {
-        const newNote = await NoteAPI.create({
+        const newNote = {
           ...formValues,
           created_at: new Date().toLocaleDateString(),
-        });
-        dispatch(addNote(newNote));
-        alert("Note successfully created");
-        navigate("/");
+        };
+        addNote(newNote);
       }}
     />
   );
