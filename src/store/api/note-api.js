@@ -24,15 +24,14 @@ export const noteAPI = createApi({
         url: `${id}`,
         method: "DELETE",
       }),
-      async onQueryStarted(id, { dispatch, queryFulfilled }) {
-        const { data: deletedNote } = await queryFulfilled;
+      async onQueryStarted(id, { dispatch }) {
         dispatch(
           noteAPI.util.updateQueryData(
             "fetchAllNotes",
             undefined,
             (cachedNotes) => {
               return cachedNotes.filter(
-                (cachedNote) => cachedNote.id !== deletedNote.id
+                (cachedNote) => cachedNote.id.toString() !== id.toString()
               );
             }
           )
