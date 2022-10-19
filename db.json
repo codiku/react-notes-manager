@@ -1,10 +1,14 @@
 {
   "notes": [
     {
-      "title": "Welcome",
-      "content": "This is a super note from db.json at the root of your project !",
-      "created_at": 1666183483,
-      "id": "1"
+      "title": "new note",
+      "content": "let's see",
+      "id": 1
+    },
+    {
+      "title": "Another note",
+      "content": "Yeaaaaah",
+      "id": 2
     }
   ]
 }
