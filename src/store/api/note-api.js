@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const noteAPI = createApi({
   reducerPath: "noteAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://6304ae6894b8c58fd722c01e.mockapi.io/notes/",
+    baseUrl: "http://localhost:3200/notes/",
   }),
   endpoints: (builder) => ({
     fetchAllNotes: builder.query({

@@ -1,0 +1,10 @@
+{
+  "notes": [
+    {
+      "title": "Welcome",
+      "content": "This is a super note from db.json at the root of your project !",
+      "created_at": 1666183483,
+      "id": "1"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import "./index.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { App } from './App';
-import { Note } from './pages/note/index';
+import { Note } from './pages/note';
 import { NoteCreate } from "./pages/note-create";
 import { NotesBrowse } from "./pages/notes-browse";
 import { PageNotFound } from "./pages/page-not-found";
