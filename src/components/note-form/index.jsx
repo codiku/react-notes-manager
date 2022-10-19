@@ -56,6 +56,7 @@ export function NoteForm({
         [e.target.name]: e.target.value,
       };
     });
+    applyFieldError(e)
   }
 
   const titleInput = (
