@@ -97,21 +97,19 @@ export function NoteForm({
 
   return (
     <div className={s.container}>
-      <div>
-        <div className="row justify-content-space-between">
-          <div className="col-10">
-            <h2 className="mb-3">
-              {defaultValue?.title && isReadOnly ? defaultValue?.title : title}
-            </h2>
-          </div>
-          {actionIcons}
+      <div className="row justify-content-space-between">
+        <div className="col-10">
+          <h2 className="mb-3">
+            {defaultValue?.title && isReadOnly ? defaultValue?.title : title}
+          </h2>
         </div>
-        <div className={`mb-3 ${s.title_input_container}`}>
-          {!isReadOnly && titleInput}
-        </div>
-        <div className="mb-3">
-          {isReadOnly ? <p>{formValues.content}</p> : contentInput}
-        </div>
+        {actionIcons}
+      </div>
+      <div className={`mb-3 ${s.title_input_container}`}>
+        {!isReadOnly && titleInput}
+      </div>
+      <div className="mb-3">
+        {isReadOnly ? <p>{formValues.content}</p> : contentInput}
       </div>
 
       {onSubmit && submitBtn}

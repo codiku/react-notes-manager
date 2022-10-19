@@ -1,12 +1,10 @@
 .main_container {
     background-color: white;
-    margin: 0;
     padding: 30px;
     box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.4);
 }
 
 .subtitle {
-    white-space: nowrap;
     color: #b8b8b8;
 }
 

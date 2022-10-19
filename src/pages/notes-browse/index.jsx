@@ -4,7 +4,7 @@ import { NoteAPI } from "../../api/note";
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
 import { removeNote } from "../../store/note-slice";
-import s from "./style.module.css"
+import s from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -31,10 +31,7 @@ export function NotesBrowse(props) {
   };
 
   return (
-    <div
-      className={`row justify-content-center ${s.container}`}
-     
-    >
+    <div className={`row justify-content-center`}>
       <div className="col-sm-12 col-md-4">
         <SearchBar
           onChange={(e) =>
@@ -49,12 +46,9 @@ export function NotesBrowse(props) {
         )}
       </div>
 
-      <div className={`row justify-content-center ${s.cards_container}`} >
+      <div className={`row justify-content-center ${s.cards_container}`}>
         {filteredNoteList.map((note) => (
-          <div
-            key={note.id}
-            className={s.card_container}
-          >
+          <div key={note.id} className={s.card_container}>
             <TextCard
               title={note.title}
               subtitle={note.created_at}

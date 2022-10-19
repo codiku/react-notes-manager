@@ -6,7 +6,7 @@
 
 .container {
     display: flex;
-   /* Otherwise the clickable logo is to big */
+   /* Otherwise the clickable area for the logo is to wide */
     width: fit-content;
     cursor: pointer;
 }

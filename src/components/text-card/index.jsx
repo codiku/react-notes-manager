@@ -1,9 +1,11 @@
 import { Trash } from "react-bootstrap-icons";
 import { useState } from "react";
 import s from "./style.module.css";
+
 export function TextCard({ title, text, subtitle, onClickTrash, onClickCard }) {
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isTrashHovered, setIsTrashHovered] = useState(false);
+
   return (
     <div
       className={`card ${s.container}`}
@@ -26,7 +28,7 @@ export function TextCard({ title, text, subtitle, onClickTrash, onClickCard }) {
           )}
         </div>
         <h6 className={`card-subtitle mb-2 ${s.subtitle}`}>{subtitle}</h6>
-        <p className="card-text">{text}</p>
+        <p className={`card-text ${s.text_content}`}>{text}</p>
       </div>
     </div>
   );

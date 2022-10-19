@@ -1,4 +1,3 @@
-import { Workspace } from "../../components/workspace";
 import { NoteForm } from "../../components/note-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,7 +20,7 @@ export function NoteUpdate(props) {
   };
 
   return (
-    <Workspace>
+    <>
       {currentNote && (
         <NoteForm
           defaultValue={{
@@ -33,6 +32,6 @@ export function NoteUpdate(props) {
           onSubmit={confirmUpdateNote}
         />
       )}
-    </Workspace>
+    </>
   );
 }

@@ -14,3 +14,12 @@
 .subtitle {
     color: #b8b8b8
 }
+
+.text_content{
+    /* Max 6 lines displayed in the card */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}

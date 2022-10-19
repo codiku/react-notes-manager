@@ -1,12 +1,11 @@
+.container {
+    padding: 50px;
+    background-color: white;
+    border-radius: 22px;
+    height: 100%;
+}
 .icon {
     cursor: pointer
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
 }
 
 .title_input_container {
@@ -14,5 +13,6 @@
 }
 
 .submit_btn{
-    align-self: end;
+    text-align: right;
 }
+

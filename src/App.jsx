@@ -18,7 +18,9 @@ export function App() {
   return (
     <div className={s.container}>
       <Header logo={logo} text="Notomatic" />
-      <Outlet />
+      <div className={s.workspace}>
+        <Outlet />
+      </div>
     </div>
   );
 }

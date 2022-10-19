@@ -1,4 +1,3 @@
-import { Workspace } from "../../components/workspace";
 import { NoteForm } from "../../components/note-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,7 +21,7 @@ export function NoteRead(props) {
   };
 
   return (
-    <Workspace>
+    <>
       {currentNote && (
         <NoteForm
           isReadOnly
@@ -36,6 +35,6 @@ export function NoteRead(props) {
           buttonText="Save new note"
         />
       )}
-    </Workspace>
+    </>
   );
 }
