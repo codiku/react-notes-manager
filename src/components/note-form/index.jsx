@@ -30,6 +30,7 @@ export function NoteForm({
       [e.target.name]: NOTE_FORM_VALIDATORS[e.target.name](e.target.value),
     });
   };
+
   const actionIcons = (
     <>
       {onClickEdit && (

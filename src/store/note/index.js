@@ -17,7 +17,7 @@ export const noteSlice = createSlice({
     },
     updateNote: (state, action) => {
       state.noteList = state.noteList.map((note => {
-        if (note.id === action.payload.id) {
+        if (note.id.toString() === action.payload.id) {
           return action.payload
         } else return note
       }))

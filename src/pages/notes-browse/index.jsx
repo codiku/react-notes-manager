@@ -1,23 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  useDeleteNoteByIdMutation,
-  useFetchAllNotesQuery,
-} from "store/api/note-api";
+import { useDispatch, useSelector } from "react-redux";
 
-import { SearchBar } from "../../components/search-bar";
-import { TextCard } from "../../components/text-card";
+import { NoteAPI } from "api/note";
+import { SearchBar } from "components/search-bar";
+import { TextCard } from "components/text-card";
+import { removeNote } from "store/note";
 import s from "./style.module.css";
 import { useState } from "react";
 
 export function NotesBrowse(props) {
   const navigate = useNavigate();
   const [currentSearchTerm, setCurrentSearchTerm] = useState("");
-
-  const { data: noteList = [] } = useFetchAllNotesQuery(undefined, {
-    refetchOnMountOrArgChange: true,
-  });
-
-  const [deleteNoteById] = useDeleteNoteByIdMutation();
+  const noteList = useSelector((store) => store.noteSlice.noteList);
+  const dispatch = useDispatch();
 
   const filteredNoteList =
     currentSearchTerm !== ""
@@ -29,8 +24,9 @@ export function NotesBrowse(props) {
       : noteList;
 
   const confirmRemoveNote = (note) => {
-    if (window.confirm("Delete this note ?" + note.id)) {
-      deleteNoteById(note.id);
+    if (window.confirm("Delete this note ?")) {
+      NoteAPI.deleteById(note.id);
+      dispatch(removeNote(note));
     }
   };
 
@@ -54,7 +50,7 @@ export function NotesBrowse(props) {
 
         <div className={`row justify-content-center ${s.cards_container}`}>
 
-          {filteredNoteList.length === 0 && <span className={s.no_note}>You don't have any note, you could <Link to="/note/create"> create one</Link></span>}
+          {noteList.length === 0 && <span className={s.no_note}>You don't have any note, you could <Link to="/note/create"> create one</Link></span>}
 
           {
             filteredNoteList.map((note) => (
