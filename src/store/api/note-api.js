@@ -16,7 +16,7 @@ export const noteAPI = createApi({
       query: ({ title, content }) => ({
         url: ``,
         method: "POST",
-        body: { title, content },
+        body: { title, content, date : new Date().toLocaleDateString() },
       }),
     }),
     deleteNoteById: builder.mutation({
