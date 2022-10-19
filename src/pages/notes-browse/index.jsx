@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import {
   useDeleteNoteByIdMutation,
   useFetchAllNotesQuery,
@@ -6,7 +7,6 @@ import {
 import { SearchBar } from "../../components/search-bar";
 import { TextCard } from "../../components/text-card";
 import s from "./style.module.css";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function NotesBrowse(props) {
@@ -35,37 +35,46 @@ export function NotesBrowse(props) {
   };
 
   return (
-    <div className={`row justify-content-center`}>
-      <div className="col-sm-12 col-md-4">
-        <SearchBar
-          onChange={(e) =>
-            setCurrentSearchTerm(e.target.value.trim().toLowerCase())
-          }
-        />
-        {currentSearchTerm !== "" && (
-          <div className={s.search_result_label}>
-            {filteredNoteList.length} note(s) match the term{" "}
-            <b>"{currentSearchTerm}"</b>
-          </div>
-        )}
+    <>
+      <div className={`row justify-content-center`}>
+        <div className="col-sm-12 col-md-4">
+          <SearchBar
+            onChange={(e) =>
+              setCurrentSearchTerm(e.target.value.trim().toLowerCase())
+            }
+          />
+          {currentSearchTerm !== "" && (
+            <div className={s.search_result_label}>
+              {filteredNoteList.length} note(s) match the term{" "}
+              <b>"{currentSearchTerm}"</b>
+            </div>
+          )}
+        </div>
+
+
+        <div className={`row justify-content-center ${s.cards_container}`}>
+
+          {filteredNoteList.length === 0 && <span className={s.no_note}>You don't have any note, you could <Link to="/note/create"> create one</Link></span>}
+
+          {
+            filteredNoteList.map((note) => (
+              <div key={note.id} className={s.card_container}>
+                <TextCard
+                  title={note.title}
+                  subtitle={note.date}
+                  text={note.content}
+                  onClickTrash={(e) => {
+                    e.stopPropagation();
+                    confirmRemoveNote(note);
+                  }}
+                  onClickCard={() => navigate("note/" + note.id)}
+                />
+              </div>
+            ))}
+        </div>
+
       </div>
 
-      <div className={`row justify-content-center ${s.cards_container}`}>
-        {filteredNoteList.map((note) => (
-          <div key={note.id} className={s.card_container}>
-            <TextCard
-              title={note.title}
-              subtitle={new Date(note.created_at * 1000).toLocaleDateString()}
-              text={note.content}
-              onClickTrash={(e) => {
-                e.stopPropagation();
-                confirmRemoveNote(note);
-              }}
-              onClickCard={() => navigate("note/" + note.id)}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
