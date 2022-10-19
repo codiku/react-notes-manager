@@ -2,9 +2,26 @@ import { PencilFill, TrashFill } from "react-bootstrap-icons";
 
 import { ButtonPrimary } from "../../components/button-primary";
 import { FieldError } from "../field-error";
-import { NOTE_FORM_VALIDATORS } from "./constant";
 import s from "./style.module.css";
 import { useState } from "react";
+
+export const NOTE_FORM_VALIDATORS = {
+  title: (newTitle) => {
+    if (newTitle?.length < 3) {
+      return "The title must be at least 3 characters long";
+    } else if (newTitle?.length > 20) {
+      return "The title can't exceed 20 characters";
+    }
+    return null;
+  },
+  content: (newContent) => {
+    if (newContent?.length < 3) {
+      return "The content must be at least 3 characters long";
+    }
+    return null;
+  },
+};
+
 
 export function NoteForm({
   onSubmit,
