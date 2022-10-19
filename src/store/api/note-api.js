@@ -44,12 +44,12 @@ export const noteAPI = createApi({
         method: "PUT",
         body: { title, content },
       }),
-      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+      async onQueryStarted(noteToUpdate, { dispatch, queryFulfilled }) {
         const { data: updatedNote } = await queryFulfilled;
         dispatch(
           noteAPI.util.updateQueryData(
             "fetchNoteById",
-            updatedNote.id,
+            noteToUpdate.id,
             (cachedNotes) => {
               return updatedNote
             }

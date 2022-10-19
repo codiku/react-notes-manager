@@ -48,8 +48,9 @@ export function Note(props) {
     }
   };
 
-  function submitUpdate(formValues) {
-    updateNoteById({ id: noteId, ...formValues })
+  function submitUpdate(note) {
+    console.log('***', note)
+    updateNoteById({ id: noteId, ...note })
   }
 
   return (
