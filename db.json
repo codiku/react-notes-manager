@@ -1,14 +1,9 @@
 {
   "notes": [
     {
-      "title": "new note",
-      "content": "let's see",
+      "title": "Welcome !",
+      "content": "This note comes from db.json in your project !",
       "id": 1
-    },
-    {
-      "title": "Another note",
-      "content": "Yeaaaaah",
-      "id": 2
     }
   ]
 }
