@@ -54,7 +54,7 @@ export function NotesBrowse(props) {
 
         <div className={`row justify-content-center ${s.cards_container}`}>
 
-          {filteredNoteList.length === 0 && <span className={s.no_note}>You don't have any note, you could <Link to="/note/create"> create one</Link></span>}
+          {noteList.length === 0 && <span className={s.no_note}>You don't have any note, you could <Link to="/note/create"> create one</Link></span>}
 
           {
             filteredNoteList.map((note) => (
