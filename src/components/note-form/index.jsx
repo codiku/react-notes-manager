@@ -109,7 +109,7 @@ export function NoteForm({
         {!isReadOnly && titleInput}
       </div>
       <div className="mb-3">
-        {isReadOnly ? <p>{formValues.content}</p> : contentInput}
+        {isReadOnly ? <pre>{formValues.content}</pre> : contentInput}
       </div>
 
       {onSubmit && submitBtn}
