@@ -14,3 +14,8 @@
 .img {
     height: 40px
 }
+
+.subtitle {
+    color: #b8b8b8;
+    word-wrap: break-word;
+}
