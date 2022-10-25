@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 import s from "./style.module.css";
+
 export function TextCard({ title, content, subtitle, onClick, onClickTrash }) {
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isTrashHovered, setIsTrashHovered] = useState(false);
