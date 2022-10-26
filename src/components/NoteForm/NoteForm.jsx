@@ -6,7 +6,7 @@ import { ValidatorService } from "./../../services/validator";
 import s from "./style.module.css";
 import { useState } from "react";
 
-const VALIDATOR = {
+const FORM_VALIDATOR = {
   title: (value) => {
     return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
   },
@@ -14,6 +14,7 @@ const VALIDATOR = {
     return ValidatorService.min(value, 3);
   },
 };
+
 export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
   const [formValues, setFormValues] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({ title: true, content: true });
@@ -28,7 +29,7 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
   const validate = (fieldName, fieldValue) => {
     setFormErrors({
       ...formErrors,
-      [fieldName]: VALIDATOR[fieldName](fieldValue),
+      [fieldName]: FORM_VALIDATOR[fieldName](fieldValue),
     });
   };
 
