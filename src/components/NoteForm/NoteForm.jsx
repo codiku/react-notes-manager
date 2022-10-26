@@ -1,22 +1,17 @@
-import { PencilFill, TrashFill } from "react-bootstrap-icons";
-
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
+import { useState } from "react";
+import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import s from "./style.module.css";
-import { useState } from 'react';
 
 export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
-
-  const [formValues, setFormValues] = useState({ title: "", content: "" })
+  const [formValues, setFormValues] = useState({ title: "", content: "" });
 
   const updateFormValues = (e) => {
-    const value = e.target.value
-    const name = e.target.name
-    setFormValues({
-      ...formValues,
-      [name]: value
-    })
-  }
+    const name = e.target.name;
+    const value = e.target.value;
 
+    setFormValues({ ...formValues, [name]: value });
+  };
   const actionIcons = (
     <>
       <div className="col-1">
@@ -30,13 +25,24 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
   const titleInput = (
     <>
       <label className="form-label">Title</label>
-      <input onChange={updateFormValues} type="text" name="title" className="form-control" />
+      <input
+        onChange={updateFormValues}
+        type="text"
+        name="title"
+        className="form-control"
+      />
     </>
   );
   const contentInput = (
     <>
       <label className="form-label">Content</label>
-      <textarea onChange={updateFormValues} type="text" name="content" className="form-control" row="5" />
+      <textarea
+        onChange={updateFormValues}
+        type="text"
+        name="content"
+        className="form-control"
+        row="5"
+      />
     </>
   );
 

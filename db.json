@@ -2,43 +2,27 @@
   "notes": [
     {
       "id": 1,
-      "title": "A title",
+      "title": "First note",
       "content": " Bla bla",
       "created_at": "01/01/2022"
     },
     {
-      "title": "A new note",
+      "title": "Second note",
       "content": "Some note content !!!",
       "created_at": "02/01/2022",
       "id": 2
     },
     {
-      "id": 3,
-      "title": "A title",
-      "content": " Bla bla",
-      "created_at": "01/01/2022"
+      "title": "aaaaa",
+      "content": "bbbbbb",
+      "created_at": "26/10/2022",
+      "id": 3
     },
     {
-      "title": "A new note",
-      "content": "Some note content !!!",
-      "created_at": "02/01/2022",
+      "title": "pppppppp",
+      "content": "mmmmmmm",
+      "created_at": "26/10/2022",
       "id": 4
-    },
-    {
-      "title": "A new note",
-      "content": "Some note content !!!",
-      "created_at": "02/01/2022",
-      "id": 5
-    },
-    {
-      "title": "Great note",
-      "content": "Yup.",
-      "id": 6
-    },
-    {
-      "title": "Nice note",
-      "content": "Yup nice :)",
-      "id": 7
     }
   ]
 }
