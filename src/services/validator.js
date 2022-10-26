@@ -1,7 +1,7 @@
 export class ValidatorService {
   static min(inputValue, min) {
     if (inputValue?.length < min) {
-      return `Has to be be at least ${min} characters long`;
+      return `Can't be less than ${min} characters`;
     }
   }
   static max(inputValue, max) {

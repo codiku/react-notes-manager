@@ -2,18 +2,18 @@ import { PencilFill, TrashFill } from "react-bootstrap-icons";
 
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { FieldError } from "components/FieldError/FieldError";
-import { ValidatorService } from './../../services/validator';
+import { ValidatorService } from "./../../services/validator";
 import s from "./style.module.css";
 import { useState } from "react";
 
 const VALIDATOR = {
   title: (value) => {
-    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20)
+    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
   },
   content: (value) => {
-    return ValidatorService.min(value, 3)
-  }
-}
+    return ValidatorService.min(value, 3);
+  },
+};
 export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
   const [formValues, setFormValues] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({ title: true, content: true });
@@ -22,7 +22,7 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
     const name = e.target.name;
     const value = e.target.value;
     setFormValues({ ...formValues, [name]: value });
-    validate(name, value)
+    validate(name, value);
   };
 
   const validate = (fieldName, fieldValue) => {
@@ -30,16 +30,16 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
       ...formErrors,
       [fieldName]: VALIDATOR[fieldName](fieldValue),
     });
-  }
+  };
 
   const hasError = () => {
     for (const fieldName in formErrors) {
       if (formErrors[fieldName]) {
-        return true
+        return true;
       }
     }
-    return false
-  }
+    return false;
+  };
 
   const actionIcons = (
     <>
@@ -59,7 +59,6 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
         type="text"
         name="title"
         className="form-control"
-
       />
       <FieldError msg={formErrors.title} />
     </div>
@@ -80,7 +79,12 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
 
   const submitBtn = (
     <div className={s.submit_btn}>
-      <ButtonPrimary isDisabled={hasError()} onClick={() => onSubmit(formValues)}>Submit</ButtonPrimary>
+      <ButtonPrimary
+        isDisabled={hasError()}
+        onClick={() => onSubmit(formValues)}
+      >
+        Submit
+      </ButtonPrimary>
     </div>
   );
 
