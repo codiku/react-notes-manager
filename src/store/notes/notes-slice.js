@@ -9,8 +9,11 @@ export const noteSlice = createSlice({
     setNoteList: (state, action) => {
       state.noteList = action.payload;
     },
+    addNote: (state, action) => {
+      state.noteList.push(action.payload);
+    },
   },
 });
 
-export const { setNoteList } = noteSlice.actions;
+export const { setNoteList, addNote } = noteSlice.actions;
 export const notesReducer = noteSlice.reducer;
