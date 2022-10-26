@@ -29,6 +29,16 @@
       "content": "Some note content !!!",
       "created_at": "02/01/2022",
       "id": 5
+    },
+    {
+      "title": "Great note",
+      "content": "Yup.",
+      "id": 6
+    },
+    {
+      "title": "Nice note",
+      "content": "Yup nice :)",
+      "id": 7
     }
   ]
 }
