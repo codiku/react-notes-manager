@@ -17,8 +17,8 @@ const VALIDATOR = {
 export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
   const [formValues, setFormValues] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({
-    title: undefined,
-    content: undefined,
+    title: true,
+    content: true,
   });
 
   const updateFormValues = (e) => {
@@ -34,6 +34,15 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
       ...formErrors,
       [fieldName]: VALIDATOR[fieldName](fieldValue),
     });
+  };
+
+  const hasError = () => {
+    for (const fieldName in formErrors) {
+      if (formErrors[fieldName]) {
+        return true;
+      }
+    }
+    return false;
   };
   const actionIcons = (
     <>
@@ -73,7 +82,12 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
 
   const submitBtn = (
     <div className={s.submit_btn}>
-      <ButtonPrimary onClick={() => onSubmit(formValues)}>Submit</ButtonPrimary>
+      <ButtonPrimary
+        isDisabled={hasError()}
+        onClick={() => onSubmit(formValues)}
+      >
+        Submit
+      </ButtonPrimary>
     </div>
   );
 
