@@ -13,16 +13,10 @@
       "id": 2
     },
     {
-      "title": "test",
-      "content": "a\n\nb\n\nc",
+      "title": "azez",
+      "content": "zzzzzzz",
       "created_at": "29/10/2022",
       "id": 3
-    },
-    {
-      "title": "test",
-      "content": "p\n\naz\n\n\naze",
-      "created_at": "29/10/2022",
-      "id": 4
     }
   ]
 }
