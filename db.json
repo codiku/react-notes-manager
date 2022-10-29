@@ -11,24 +11,6 @@
       "content": "Some note content !!!",
       "created_at": "02/01/2022",
       "id": 2
-    },
-    {
-      "title": "aaaaa",
-      "content": "bbbbbb",
-      "created_at": "26/10/2022",
-      "id": 3
-    },
-    {
-      "title": "pppppppp",
-      "content": "mmmmmmm",
-      "created_at": "26/10/2022",
-      "id": 4
-    },
-    {
-      "title": "aze",
-      "content": "aze",
-      "created_at": "27/10/2022",
-      "id": 5
     }
   ]
 }
