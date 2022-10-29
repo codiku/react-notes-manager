@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "First note",
-      "content": " Bla bla",
+      "content": " Bla bla bla bli",
       "created_at": "01/01/2022"
     },
     {
@@ -11,12 +11,6 @@
       "content": "Some note content !!!",
       "created_at": "02/01/2022",
       "id": 2
-    },
-    {
-      "title": "azez",
-      "content": "zzzzzzz",
-      "created_at": "29/10/2022",
-      "id": 3
     }
   ]
 }
