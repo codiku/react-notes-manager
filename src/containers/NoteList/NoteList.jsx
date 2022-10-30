@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteNote } from "store/notes/notes-slice";
 import s from "./style.module.css";
-export function NoteList() {
-  const noteList = useSelector((store) => store.notesSlice.noteList);
+export function NoteList({ noteList }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
