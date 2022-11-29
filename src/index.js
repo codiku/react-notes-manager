@@ -13,18 +13,16 @@ import { App } from "App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="/" element={<NoteBrowse />} />
-            <Route path="/note/:id" element={<Note />} />
-            <Route path="/note/new" element={<NoteCreate />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/" element={<NoteBrowse />} />
+          <Route path="/note/:id" element={<Note />} />
+          <Route path="/note/new" element={<NoteCreate />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
