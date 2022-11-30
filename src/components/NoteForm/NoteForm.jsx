@@ -23,10 +23,13 @@ export function NoteForm({
   onClickTrash,
   onSubmit,
 }) {
-  const [formValues, setFormValues] = useState({ title: "", content: "" });
+  const [formValues, setFormValues] = useState({
+    title: note?.title,
+    content: note?.content,
+  });
   const [formErrors, setFormErrors] = useState({
-    title: "",
-    content: "",
+    title: note?.title ? undefined : "",
+    content: note?.content ? undefined : "",
   });
 
   function hasError() {
@@ -67,6 +70,7 @@ export function NoteForm({
         type="text"
         name="title"
         className="form-control"
+        value={formValues.title}
       />
       <FieldError msg={formErrors.title} />
     </div>
@@ -81,6 +85,7 @@ export function NoteForm({
         name="content"
         className="form-control"
         row="5"
+        value={formValues.content}
       />
       <FieldError msg={formErrors.content} />
     </div>
