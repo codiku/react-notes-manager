@@ -1,7 +1,7 @@
 import s from "./style.module.css";
 import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ValidatorService } from "services/form-validators";
 import { FieldError } from "components/FieldError/FieldError";
 
@@ -17,19 +17,26 @@ const VALIDATORS = {
 export function NoteForm({ title, onClickEdit, onClickTrash, onSubmit }) {
   const [formValues, setFormValues] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({
-    title: undefined,
-    content: undefined,
+    title: "",
+    content: "",
   });
+
+  function hasError() {
+    return Object.values(formErrors).some((error) => error !== undefined);
+  }
   function updateFormValues(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
     validate(e.target.name, e.target.value);
   }
 
-  function validate(fieldName, fieldValue) {
-    setFormErrors({
-      ...formErrors,
-      [fieldName]: VALIDATORS[fieldName](fieldValue),
-    });
+  function validate(fieldName, fieldValue, done) {
+    setFormErrors(
+      {
+        ...formErrors,
+        [fieldName]: VALIDATORS[fieldName](fieldValue),
+      },
+      done
+    );
   }
   const actionIcons = (
     <>
@@ -73,7 +80,12 @@ export function NoteForm({ title, onClickEdit, onClickTrash, onSubmit }) {
 
   const submitButton = (
     <div className={s.submit_btn}>
-      <ButtonPrimary onClick={() => onSubmit(formValues)}>Submit</ButtonPrimary>
+      <ButtonPrimary
+        isDisabled={hasError()}
+        onClick={() => onSubmit(formValues)}
+      >
+        Submit
+      </ButtonPrimary>
     </div>
   );
 
