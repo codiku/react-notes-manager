@@ -4,6 +4,7 @@ import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { useEffect, useState } from "react";
 import { ValidatorService } from "services/form-validators";
 import { FieldError } from "components/FieldError/FieldError";
+import { noteReducer } from "store/note/note-slice";
 
 const VALIDATORS = {
   title: (value) => {
@@ -14,7 +15,14 @@ const VALIDATORS = {
   },
 };
 
-export function NoteForm({ title, onClickEdit, onClickTrash, onSubmit }) {
+export function NoteForm({
+  isEditable = true,
+  note,
+  title,
+  onClickEdit,
+  onClickTrash,
+  onSubmit,
+}) {
   const [formValues, setFormValues] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({
     title: "",
@@ -97,8 +105,12 @@ export function NoteForm({ title, onClickEdit, onClickTrash, onSubmit }) {
         </div>
         {actionIcons}
       </div>
-      <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
-      <div className="mb-3">{contentInput}</div>
+      <div className={`mb-3 ${s.title_input_container}`}>
+        {isEditable && titleInput}
+      </div>
+      <div className="mb-3">
+        {isEditable ? contentInput : <pre>{note.content}</pre>}
+      </div>
       {onSubmit && submitButton}
     </form>
   );
