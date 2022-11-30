@@ -1,14 +1,23 @@
 import s from "./style.module.css";
 import { PencilFill, Trash, TrashFill } from "react-bootstrap-icons";
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
-export function NoteForm({ title }) {
+import { useState } from "react";
+export function NoteForm({ title, onClickEdit, onClickTrash, onSubmit }) {
+  const [formValues, setFormValues] = useState({ title: "", content: "" });
+
+  function updateFormValues(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  }
+
   const actionIcons = (
     <>
       <div className="col-1">
-        <PencilFill className={s.icon} />
+        {onClickEdit && <PencilFill onClick={onClickEdit} className={s.icon} />}
       </div>
       <div className="col-1">
-        <TrashFill className={s.icon} />
+        {onClickTrash && (
+          <TrashFill onClick={onClickTrash} className={s.icon} />
+        )}
       </div>
     </>
   );
@@ -16,25 +25,36 @@ export function NoteForm({ title }) {
   const titleInput = (
     <>
       <label className="form-label">Title</label>
-      <input type="text" name="title" className="form-control" />
+      <input
+        onChange={updateFormValues}
+        type="text"
+        name="title"
+        className="form-control"
+      />
     </>
   );
 
   const contentInput = (
     <>
       <label className="form-label">Content</label>
-      <textarea type="text" name="content" className="form-control" row="5" />
+      <textarea
+        onChange={updateFormValues}
+        type="text"
+        name="content"
+        className="form-control"
+        row="5"
+      />
     </>
   );
 
   const submitButton = (
     <div className={s.submit_btn}>
-      <ButtonPrimary>Submit</ButtonPrimary>
+      <ButtonPrimary onClick={() => onSubmit(formValues)}>Submit</ButtonPrimary>
     </div>
   );
 
   return (
-    <div className={s.container}>
+    <form className={s.container}>
       <div className="row justify-content-space-between">
         <div className="col-10">
           <h2 className="mb-3">{title}</h2>
@@ -43,7 +63,7 @@ export function NoteForm({ title }) {
       </div>
       <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
       <div className="mb-3">{contentInput}</div>
-      {submitButton}
-    </div>
+      {onSubmit && submitButton}
+    </form>
   );
 }

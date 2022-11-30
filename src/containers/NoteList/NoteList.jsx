@@ -9,10 +9,10 @@ export function NoteList(props) {
     <div className={`row justify-content-center`}>
       {noteList.map((note) => {
         return (
-          <div className={s.card_container}>
+          <div key={note.id} className={s.card_container}>
             <TextCard
               title={note.title}
-              subtitle={note.subtitle}
+              subtitle={note.created_at}
               content={note.content}
               onClick={() => navigate("/note/" + note.id)}
               onClickTrash={() => alert("Click trash")}
