@@ -3,6 +3,7 @@ import { TextCard } from "components/TextCard/TextCard";
 import { NoteList } from "containers/NoteList/NoteList";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export function NoteBrowse(props) {
   const [searchText, setSearchText] = useState("");
@@ -28,6 +29,15 @@ export function NoteBrowse(props) {
           />
         </div>
       </div>
+
+      {noteList?.length === 0 && (
+        <div className="d-flex justify-content-center">
+          <span>
+            Vous n'avez pas de note, voulez vous en{" "}
+            <Link to="/note/new"> créer une </Link>
+          </span>
+        </div>
+      )}
       <NoteList noteList={filteredList} />
     </>
   );
