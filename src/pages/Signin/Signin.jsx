@@ -1,5 +1,6 @@
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { Input } from "components/Input/Input";
+import { AuthLayout } from "layouts/AuthLayout/AuthLayout";
 import { Link } from "react-router-dom";
 import s from "./style.module.css";
 
@@ -20,5 +21,5 @@ export function Signin() {
       </form>
     </div>
   );
-  return <>{form}</>;
+  return <AuthLayout>{form}</AuthLayout>;
 }
