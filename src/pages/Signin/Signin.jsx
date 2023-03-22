@@ -16,7 +16,7 @@ export function Signin() {
         <Input placeholder={"Password"} type="password" />
         <ButtonPrimary className={s.button}>Sign in!</ButtonPrimary>
         <span>
-          Don't have an account yet ? <Link>Signup</Link>
+          Don't have an account yet ? <Link to={"/signup"}>Signup</Link>
         </span>
       </form>
     </div>

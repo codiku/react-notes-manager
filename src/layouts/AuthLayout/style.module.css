@@ -2,7 +2,12 @@
   display: flex;
   height: 100%;
 }
-
+.logoTitle {
+  font-size: 20px;
+  margin: 0;
+  padding-top: 4px;
+  text-align: center;
+}
 .logoTop {
   fill: #0d6efd;
   height: 30px;
@@ -12,10 +17,16 @@
 
 .header {
   display: flex;
+  position: absolute;
+  top: 3%;
+  left: 3%;
 }
 
 .leftSection {
   flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rightSection {
@@ -25,7 +36,6 @@
   background-size: cover;
   justify-content: center;
   align-items: center;
-  display: flex;
 }
 
 .logo {
