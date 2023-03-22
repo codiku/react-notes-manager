@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.formGroup > * {
+  margin: 10px;
+}
+
 .title {
   font-weight: bold;
   text-align: center;
