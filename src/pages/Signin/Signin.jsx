@@ -8,11 +8,12 @@ import s from "./style.module.css";
 export function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const submit = (e) => {
     e.preventDefault();
     console.log("submited ", email, password);
   };
-  console.log(email, password);
+
   const form = (
     <div className={s.formContainer}>
       <h2 className={s.title}>
