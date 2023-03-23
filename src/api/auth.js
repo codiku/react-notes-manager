@@ -1,4 +1,4 @@
-import { FirebaseApp } from "utils/firebase";
+import { FirebaseApp } from "services/firebase";
 import {
   signOut,
   signInWithEmailAndPassword,
