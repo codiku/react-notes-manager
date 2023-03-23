@@ -8,7 +8,7 @@ import { NoteBrowse } from "pages/NoteBrowse/NoteBrowse";
 import { NoteCreate } from "pages/NoteCreate/NoteCreate";
 import { Note } from "pages/Note/Note";
 import { PageNotFound } from "pages/PageNotFound/PageNotFound";
-import { App } from "App";
+import { ProtectedApp } from "App";
 import { Signin } from "pages/Signin/Signin";
 import { Signup } from "pages/Signup/Signup";
 import { FirebaseApp } from "utils/firebase";
@@ -24,7 +24,7 @@ root.render(
         <Routes>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<App />}>
+          <Route path="/" element={<ProtectedApp />}>
             <Route path="/" element={<NoteBrowse />} />
             <Route path="/note/:noteId" element={<Note />} />
             <Route path="/note/new" element={<NoteCreate />} />

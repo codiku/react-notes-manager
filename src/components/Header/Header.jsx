@@ -4,7 +4,7 @@ import logoSrc from "assets/images/logo.png";
 import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { useNavigate } from "react-router-dom";
 
-export function Header(props) {
+export function Header() {
   const navigate = useNavigate();
   return (
     <div className={`row ${s.container}`}>
