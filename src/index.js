@@ -13,6 +13,7 @@ import { Signin } from "pages/Signin/Signin";
 import { Signup } from "pages/Signup/Signup";
 import { FirebaseApp } from "utils/firebase";
 import { PersistGate } from "redux-persist/integration/react";
+
 FirebaseApp.init();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
