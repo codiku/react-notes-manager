@@ -1,4 +1,6 @@
-#root {
+body,
+body,
+body #root {
   height: 100vh;
   font-family: Roboto;
   background-color: #f8f9fb;
