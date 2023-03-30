@@ -1,5 +1,6 @@
 import s from "./style.module.css";
-export function Logo({ image, title, subtitle, onClick }) {
+
+export function LogoHeader({ image, title, subtitle, onClick }) {
   return (
     <div onClick={onClick}>
       <div className={s.container}>

@@ -1,7 +1,6 @@
-import { Logo } from "components/Logo/Logo";
+import { LogoHeader } from "components/LogoHeader/LogoHeader";
 import s from "./style.module.css";
 import logoSrc from "assets/images/logo.png";
-import { ButtonPrimary } from "components/ButtonPrimary/ButtonPrimary";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "store/auth/auth-selectors";
@@ -35,7 +34,7 @@ export function Header() {
   return (
     <div className={`row ${s.container}`}>
       <div className="col-xs-12 col-sm-4">
-        <Logo
+        <LogoHeader
           onClick={() => navigate("/")}
           title="Notomatic"
           subtitle={"Manage your notes"}
