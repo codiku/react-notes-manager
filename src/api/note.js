@@ -29,13 +29,18 @@ export class NoteAPI {
       orderBy("created_at", "asc")
     );
     const response = await getDocs(q);
-    return response.docs.map((document) => {
-      return {
-        id: document.id,
-        ...document.data(),
-      };
-    });
+    return response.docs
+      .map((document) => {
+        return {
+          id: document.id,
+          ...document.data(),
+        };
+      })
+      .sort((a, b) => {
+        return parseDMY(a.created_at) > parseDMY(b.created_at);
+      });
   }
+
   static async deleteById(noteId) {
     deleteDoc(doc(FirebaseApp.db, "notes", noteId));
   }
@@ -60,3 +65,8 @@ export class NoteAPI {
     return unsub;
   }
 }
+
+const parseDMY = (dateString) => {
+  let [d, m, y] = dateString.split("/");
+  return new Date(y, m - 1, d);
+};
