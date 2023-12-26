@@ -41,6 +41,36 @@
       "content": "The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.\n\nExample : \n\nconst array1 = [1, 4, 9, 16];\n\n// pass a function to map\nconst map1 = array1.map(x => x * 2);\n\nconsole.log(map1);\n// expected output: Array [2, 8, 18, 32]",
       "created_at": "13/10/2022",
       "id": 11
+    },
+    {
+      "title": "test",
+      "content": "testtt",
+      "created_at": "26/12/2023",
+      "id": 12
+    },
+    {
+      "title": "test",
+      "content": "testtt",
+      "created_at": "26/12/2023",
+      "id": 13
+    },
+    {
+      "title": "test",
+      "content": "testc",
+      "created_at": "26/12/2023",
+      "id": 14
+    },
+    {
+      "title": "Super mega note",
+      "content": "avec du contenu",
+      "created_at": "26/12/2023",
+      "id": 15
+    },
+    {
+      "title": "test",
+      "content": "test hh",
+      "created_at": "26/12/2023",
+      "id": 16
     }
   ]
 }

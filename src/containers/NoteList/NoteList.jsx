@@ -2,6 +2,7 @@ import { TextCard } from "components/TextCard/TextCard";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import s from "./style.module.css";
+
 export function NoteList(props) {
   const noteList = useSelector((store) => store.NOTE.noteList);
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export function NoteList(props) {
     <div className={`row justify-content-center`}>
       {noteList.map((note) => {
         return (
-          <div className={s.card_container}>
+          <div className={s.card_container} key={note.id}>
             <TextCard
               title={note.title}
               subtitle={note.subtitle}
