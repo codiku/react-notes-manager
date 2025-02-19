@@ -14,6 +14,7 @@
     "use-async-effect": "^2.2.6"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
